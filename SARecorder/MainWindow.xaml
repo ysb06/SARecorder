@@ -1,0 +1,27 @@
+﻿<Window x:Class="SARecorder.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:sagat="clr-namespace:SARecorder.SAGAT"
+        xmlns:local="clr-namespace:SARecorder"
+        mc:Ignorable="d"
+        Title="MainWindow" Height="640" Width="480">
+    <Grid>
+        <!--3개 Row-->
+        <Grid.RowDefinitions>
+            <RowDefinition/>
+            <RowDefinition/>
+            <RowDefinition/>
+            <RowDefinition/>
+        </Grid.RowDefinitions>
+
+        <!--3ro Column-->
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition/>
+        </Grid.ColumnDefinitions>
+
+        <sagat:ShortAnswerQuestion />
+        <sagat:TouchPainter />
+    </Grid>
+</Window>
