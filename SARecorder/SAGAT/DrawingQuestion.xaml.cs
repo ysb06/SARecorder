@@ -14,18 +14,13 @@ using System.Windows.Shapes;
 namespace SARecorder.SAGAT
 {
     /// <summary>
-    /// ShortAnswerQuestion.xaml에 대한 상호 작용 논리
+    /// DrawingQuestion.xaml에 대한 상호 작용 논리
     /// </summary>
-    public partial class ShortAnswerQuestion : UserControl, IQuestion
+    public partial class DrawingQuestion : UserControl
     {
-        public int IntAnswer => throw new NotImplementedException();
-
-        public string StringAnswer => throw new NotImplementedException();
-
-        public ShortAnswerQuestion()
+        public DrawingQuestion()
         {
             InitializeComponent();
         }
-
     }
 }

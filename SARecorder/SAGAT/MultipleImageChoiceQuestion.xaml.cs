@@ -14,25 +14,13 @@ using System.Windows.Shapes;
 namespace SARecorder.SAGAT
 {
     /// <summary>
-    /// TouchPainter.xaml에 대한 상호 작용 논리
+    /// MultipleImageChoiceQuestion.xaml에 대한 상호 작용 논리
     /// </summary>
-    public partial class TouchPainter : UserControl
+    public partial class MultipleImageChoiceQuestion : UserControl
     {
-        private bool DrawingActivated = false;
-
-        public TouchPainter()
+        public MultipleImageChoiceQuestion()
         {
             InitializeComponent();
-        }
-
-        private void Canvas_MouseDown(object sender, MouseButtonEventArgs e)
-        {
-
-        }
-
-        private void Canvas_MouseMove(object sender, MouseEventArgs e)
-        {
-
         }
     }
 }

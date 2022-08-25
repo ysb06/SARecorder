@@ -8,20 +8,18 @@
         mc:Ignorable="d"
         Title="MainWindow" Height="640" Width="480">
     <Grid>
-        <!--3개 Row-->
         <Grid.RowDefinitions>
             <RowDefinition/>
-            <RowDefinition/>
+            <RowDefinition Height="400"/>
             <RowDefinition/>
             <RowDefinition/>
         </Grid.RowDefinitions>
 
-        <!--3ro Column-->
         <Grid.ColumnDefinitions>
             <ColumnDefinition/>
         </Grid.ColumnDefinitions>
 
         <sagat:ShortAnswerQuestion />
-        <sagat:TouchPainter />
+        <sagat:DrawingQuestion Grid.Row="1"/>
     </Grid>
 </Window>
