@@ -1,0 +1,100 @@
+﻿<Window x:Class="SARecorder.QuestionnaireWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:sagat="clr-namespace:SARecorder.SAGAT"
+        xmlns:local="clr-namespace:SARecorder"
+        mc:Ignorable="d"
+        Title="MainWindow" Height="960" Width="720">
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition/>
+            <RowDefinition Height="100"/>
+        </Grid.RowDefinitions>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition />
+            <ColumnDefinition />
+        </Grid.ColumnDefinitions>
+        <TabControl x:Name="QuestionSpace" Grid.Row="0" Grid.ColumnSpan="2">
+            <TabItem Header="주관식">
+                <Grid>
+                    <Grid.RowDefinitions>
+                        <RowDefinition />
+                        <RowDefinition />
+                    </Grid.RowDefinitions>
+                    <sagat:DrawingQuestion 
+                        x:Name="Question1" 
+                        Grid.Row="0" 
+                        MainTitle="1. 계기판에 표시되는 경고 신호를 확인하셨습니까?" 
+                        SubTitle="Did you notice a warning signal on the display?"/>
+                    <sagat:DrawingQuestion 
+                        x:Name="Question2" 
+                        Grid.Row="1" 
+                        MainTitle="2. 도로에 장애물이나 차량이 있었습니까?" 
+                        SubTitle="Are there any obstacles or cars in the road?"/>
+                </Grid>
+            </TabItem>
+            <TabItem Header="객관식">
+                <Grid>
+                    <Grid.RowDefinitions>
+                        <RowDefinition />
+                        <RowDefinition />
+                        <RowDefinition />
+                    </Grid.RowDefinitions>
+                    <sagat:DrawingQuestion 
+                        x:Name="Question3" 
+                        Grid.Row="0" 
+                        MainTitle="3. 아래 보기 중, 정지 전 주행 상황에 있던 장애물이나 차량은 무엇인가요?" 
+                        SubTitle="What obstacle or car was in the scene?">
+                        <sagat:DrawingQuestion.CanvasBackground>
+                            <ImageBrush ImageSource="/Resources/Q3.png" Stretch="Uniform" TileMode="None"/>
+                        </sagat:DrawingQuestion.CanvasBackground>
+                    </sagat:DrawingQuestion>
+                    <sagat:DrawingQuestion 
+                        x:Name="Question4" 
+                        Grid.Row="1" 
+                        MainTitle="4. 다음 알람 중, 계기판에 나타난 경고 신호는 무엇인가요?" 
+                        SubTitle="Describe any warning signal you noticed on the display?">
+                        <sagat:DrawingQuestion.CanvasBackground>
+                            <ImageBrush Stretch="Uniform" ImageSource="/Resources/Q4.png"/>
+                        </sagat:DrawingQuestion.CanvasBackground>
+                    </sagat:DrawingQuestion>
+                    <sagat:DrawingQuestion 
+                        x:Name="Question5" 
+                        Grid.Row="2" 
+                        MainTitle="5. 정지 전 주행 상황에서 차량이나 장애물을 피하려면 어떤 행동을 취해야하나요? (자유 서술)" 
+                        SubTitle="What action do you need to take to avoid the obstacles?"/>
+                </Grid>
+            </TabItem>
+            <TabItem Header="그림">
+                <Grid>
+                    <Grid.RowDefinitions>
+                        <RowDefinition />
+                        <RowDefinition />
+                    </Grid.RowDefinitions>
+                    <sagat:DrawingQuestion 
+                        x:Name="Question6" 
+                        Grid.Row="0"
+                        MainTitle="6. 정지 전 주행 상황에서 차량은 어디에 위치하고 있었는지 아래 그림에 표시해 주세요."
+                        SubTitle="Where are you in the scene shown? draw your car and other cars and hazard / obstacles?">
+                        <sagat:DrawingQuestion.CanvasBackground>
+                            <ImageBrush Stretch="Uniform" ImageSource="/Resources/Q5.png"/>
+                        </sagat:DrawingQuestion.CanvasBackground>
+                    </sagat:DrawingQuestion>
+                    <sagat:DrawingQuestion 
+                        x:Name="Question7" 
+                        Grid.Row="1" 
+                        MainTitle="7. 아래 그림 위에 기억하시는 정지 전 주행 상황의 모습을 모두 그려주세요." 
+                        SubTitle="Where is the obstacles or cars in the scene?">
+                        <sagat:DrawingQuestion.CanvasBackground>
+                            <ImageBrush ImageSource="/Resources/Q5.png" Stretch="Uniform"/>
+                        </sagat:DrawingQuestion.CanvasBackground>
+                    </sagat:DrawingQuestion>
+                </Grid>
+            </TabItem>
+        </TabControl>
+        <Button x:Name="PrevButton" Content="이전" Grid.Row="2" Grid.Column="0" Margin="10,10,10,10" FontSize="36" Click="PrevButton_Click" />
+        <Button x:Name="NextButton" Content="다음" Grid.Row="2" Grid.Column="1" Margin="10,10,10,10" FontSize="36" Click="NextButton_Click" />
+    </Grid>
+</Window>

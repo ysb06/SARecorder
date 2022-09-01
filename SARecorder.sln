@@ -3,7 +3,7 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 16
 VisualStudioVersion = 16.0.32802.440
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SARecorder", "SARecorder\SARecorder.csproj", "{A2E4ABBE-0214-4051-BC1B-D69348F03B93}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "SARecorder", "SARecorder\SARecorder.csproj", "{A2E4ABBE-0214-4051-BC1B-D69348F03B93}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

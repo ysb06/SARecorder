@@ -11,6 +11,7 @@ using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
 using System.Diagnostics;
+using System.IO;
 
 namespace SARecorder.Drawing
 {
@@ -33,35 +34,74 @@ namespace SARecorder.Drawing
             { DrawingMode.Line, new LineDrawer() },
             { DrawingMode.FreeDraw, new PathDrawer() }
         };
-        public DrawingMode CurrentMode = DrawingMode.FreeDraw;
+        private DrawingMode currentMode = DrawingMode.FreeDraw;
+        public DrawingMode CurrentMode
+        {
+            get { return currentMode; }
+            set
+            {
+                drawingFunctions[currentMode].Cancel(lastPoint);
+                currentMode = value;
+            }
+        }
+        private Point lastPoint = new Point();
 
         public BasicPainter()
         {
             InitializeComponent();
         }
 
+        public void ClearCanvas()
+        {
+            CanvasBoard.Children.Clear();
+        }
+
+        public void SaveImage(string fileName, string folderName = null)
+        {
+            RenderTargetBitmap rtb = new RenderTargetBitmap((int)CanvasBoard.ActualWidth, (int)CanvasBoard.ActualHeight, 96, 96, PixelFormats.Pbgra32);
+            rtb.Render(CanvasBoard);
+
+            string folderPath = Environment.CurrentDirectory + @$"\Answers\";
+            if (folderName != null)
+            {
+                folderPath += @$"{folderName}\";
+            }
+            string filePath = $"{folderPath}{fileName}.png";
+            DirectoryInfo di = new DirectoryInfo(folderPath);
+            if (di.Exists == false)
+            {
+                di.Create();
+            }
+                        
+            using Stream stream = new FileStream(filePath, FileMode.Create, FileAccess.Write, FileShare.None);
+            PngBitmapEncoder encoder = new PngBitmapEncoder();
+            encoder.Frames.Add(BitmapFrame.Create(rtb));
+            encoder.Save(stream);
+        }
+
         private void WhiteBoard_MouseDown(object sender, MouseButtonEventArgs e)
         {
-            Point startPoint = e.GetPosition(WhiteBoard);
-            UIElement element = drawingFunctions[CurrentMode].Awake(startPoint);
-            WhiteBoard.Children.Add(element);
+            lastPoint = e.GetPosition(CanvasBoard);
+            UIElement element = drawingFunctions[currentMode].Awake(lastPoint);
+            CanvasBoard.Children.Add(element);
         }
 
         private void WhiteBoard_MouseMove(object sender, MouseEventArgs e)
         {
-            Point point = e.GetPosition(WhiteBoard);
-            drawingFunctions[CurrentMode].Draw(point);
+            lastPoint = e.GetPosition(CanvasBoard);
+            drawingFunctions[currentMode].Draw(lastPoint);
         }
 
         private void WhiteBoard_MouseUp(object sender, MouseButtonEventArgs e)
         {
-            drawingFunctions[CurrentMode].Finish(e.GetPosition(WhiteBoard));
+            lastPoint = e.GetPosition(CanvasBoard);
+            drawingFunctions[currentMode].Finish(lastPoint);
         }
 
         private void WhiteBoard_MouseLeave(object sender, MouseEventArgs e)
         {
-            Point point = e.GetPosition(WhiteBoard);
-            drawingFunctions[CurrentMode].Cancel(point);
+            lastPoint = e.GetPosition(CanvasBoard);
+            drawingFunctions[currentMode].Cancel(lastPoint);
         }
     }
 }

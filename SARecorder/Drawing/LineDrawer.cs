@@ -11,7 +11,7 @@ namespace SARecorder.Drawing
     class LineDrawer : IDrawer
     {
         private bool drawingActivated = false;
-        private Line currentLine = new Line();
+        private Line currentLine;
 
         public UIElement Awake(Point start)
         {

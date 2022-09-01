@@ -4,6 +4,7 @@ using System.Text;
 using System.Windows;
 using System.Windows.Media;
 using System.Windows.Shapes;
+using System.Diagnostics;
 
 namespace SARecorder.Drawing
 {
@@ -11,22 +12,22 @@ namespace SARecorder.Drawing
     {
         private bool drawingActivated = false;
         private Path currentPath = new Path();
-        private StreamGeometry lineData = new StreamGeometry();
-        private StreamGeometryContext lineContext = null;
+        private PathGeometry currentGeometry = new PathGeometry();
 
         public UIElement Awake(Point start)
         {
             drawingActivated = true;
 
-            lineData = new StreamGeometry();
+            currentGeometry = new PathGeometry();
+            currentGeometry.Figures.Add(new PathFigure());
+            currentGeometry.Figures[0].StartPoint = start;
+
             currentPath = new Path()
             {
                 Stroke = Brushes.Black,
                 StrokeThickness = 2,
+                Data = currentGeometry
             };
-
-            lineContext = lineData.Open();
-            lineContext.BeginFigure(start, false, false);
 
             return currentPath;
         }
@@ -34,42 +35,28 @@ namespace SARecorder.Drawing
         public void Cancel(Point last)
         {
             drawingActivated = false;
-
-            currentPath.Data = lineData;
-            if (lineContext != null)
+            if (currentGeometry.IsFrozen == false)
             {
-                lineContext.Close();
-                lineContext = null;
+                currentGeometry.Freeze();
             }
-            currentPath.Data.Freeze();
+            currentPath.Data = currentGeometry;
         }
 
         public void Draw(Point current)
         {
             if (drawingActivated)
             {
-                if (lineContext != null)
-                {
-                    lineContext.LineTo(current, true, true);
-
-                    Geometry currentData = lineData.GetFlattenedPathGeometry();
-                    currentData.Freeze();
-                    currentPath.Data = currentData;
-                }
+                currentGeometry.Figures[0].Segments.Add(new LineSegment(current, true));
             }
         }
 
         public void Finish(Point end)
         {
             drawingActivated = false;
-
-            currentPath.Data = lineData;
-            if (lineContext != null)
+            if (currentGeometry.IsFrozen == false)
             {
-                lineContext.Close();
-                lineContext = null;
+                currentGeometry.Freeze();
             }
-            currentPath.Data.Freeze();
         }
     }
 }

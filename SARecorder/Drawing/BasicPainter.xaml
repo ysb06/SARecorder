@@ -6,5 +6,5 @@
              xmlns:local="clr-namespace:SARecorder.Drawing"
              mc:Ignorable="d" 
              d:DesignHeight="450" d:DesignWidth="800" BorderBrush="Black" BorderThickness="3,3,3,3">
-    <Canvas x:Name="WhiteBoard" MouseDown="WhiteBoard_MouseDown" MouseMove="WhiteBoard_MouseMove" MouseUp="WhiteBoard_MouseUp" Background="White" MouseLeave="WhiteBoard_MouseLeave" />
+    <Canvas x:Name="CanvasBoard" MouseDown="WhiteBoard_MouseDown" MouseMove="WhiteBoard_MouseMove" MouseUp="WhiteBoard_MouseUp" MouseLeave="WhiteBoard_MouseLeave" Background="White" />
 </UserControl>
