@@ -118,13 +118,55 @@
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
   <assembly alias="System.Windows.Forms" name="System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
+  <data name="Guide" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\resources\guide.png;System.Byte[], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="q1" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\resources\q1.png;System.Byte[], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
   <data name="Q3" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\q3.png;System.Byte[], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+    <value>..\resources\q3.png;System.Byte[], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="q3_l" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\resources\q3_l.png;System.Byte[], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
   <data name="Q4" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\q4.png;System.Byte[], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+    <value>..\resources\q4.png;System.Byte[], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
-  <data name="Q5" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\q5.png;System.Byte[], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  <data name="q4_l1" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\resources\q4_l1.png;System.Byte[], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="Q4_l2" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\resources\q4_l2.png;System.Byte[], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="q5" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\resources\q5.png;System.Byte[], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="Q5_1" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\resources\q5_1.png;System.Byte[], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="Q5_2" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\resources\q5_2.png;System.Byte[], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="Q5_n" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\resources\q5_n.png;System.Byte[], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="Q6_1" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\Q6_1.png;System.Byte[], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="Q6_2" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\Q6_2.png;System.Byte[], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="Q6_4" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\Q6_4.png;System.Byte[], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="Q6_6" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\Q6_6.png;System.Byte[], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="Q6_7" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\Q6_7.png;System.Byte[], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="StanfordChannel" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\resources\stanfordchannel.jpg;System.Byte[], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
 </root>

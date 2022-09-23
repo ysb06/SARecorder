@@ -13,6 +13,8 @@ using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
 using System.Diagnostics;
+using SARecorder.GeneralUI;
+using System.IO;
 
 namespace SARecorder
 {
@@ -25,6 +27,30 @@ namespace SARecorder
     {
         public string SubjectName { get; set; } = "Unknown";
         public string SubjectTag { get; set; } = "Unknown";
+
+        private int question7Index = 0;
+        public int Question7Index
+        {
+            get { return question7Index; }
+            set
+            {
+                try
+                {
+                    ImageBrush background = new ImageBrush(new BitmapImage(new Uri($"pack://application:,,,/Resources/Q6_{value}.png")));
+                    background.Stretch = Stretch.Uniform;
+
+                    Question7.CanvasBackground = background;
+                }
+                catch (IOException)
+                {
+                    Debug.WriteLine("Warning: Background file not found");
+                }
+                finally
+                {
+                    question7Index = value;
+                }
+            }
+        }
 
         public event QuestionnaireFinishedEventHandler QuestionnaireFinished;
 
@@ -42,8 +68,8 @@ namespace SARecorder
             }
             else
             {
-                MessageBoxResult result = MessageBox.Show("설문지를 종료할까요?", "SAGAT", MessageBoxButton.YesNo);
-                switch(result)
+                MessageBoxResult result = BigMessageBox.ShowWithAnswer("설문지를 종료할까요?", "SAGAT", MessageBoxButton.YesNo);
+                switch (result)
                 {
                     case MessageBoxResult.Yes:
                         try
@@ -84,7 +110,7 @@ namespace SARecorder
             Question4.SaveAsFile(SubjectName, SubjectTag);
             Question5.SaveAsFile(SubjectName, SubjectTag);
             Question6.SaveAsFile(SubjectName, SubjectTag);
-
+            Question7.SaveAsFile(SubjectName, SubjectTag);
         }
     }
 }

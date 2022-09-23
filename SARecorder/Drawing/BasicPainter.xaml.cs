@@ -61,7 +61,8 @@ namespace SARecorder.Drawing
             RenderTargetBitmap rtb = new RenderTargetBitmap((int)CanvasBoard.ActualWidth, (int)CanvasBoard.ActualHeight, 96, 96, PixelFormats.Pbgra32);
             rtb.Render(CanvasBoard);
 
-            string folderPath = Environment.CurrentDirectory + @$"\Answers\";
+            string dateText = DateTime.Now.ToString("yyMMdd");
+            string folderPath = Environment.CurrentDirectory + @$"\Answers\{dateText}";
             if (folderName != null)
             {
                 folderPath += @$"{folderName}\";

@@ -5,20 +5,22 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:SARecorder"
         mc:Ignorable="d"
-        Title="ExpController" Height="640" Width="480" Loaded="Window_Loaded" Closed="Window_Closed">
+        Title="ExpController" Height="960" Width="480" Loaded="Window_Loaded" Closed="Window_Closed" WindowStartupLocation="CenterScreen">
     <Grid>
         <Grid.RowDefinitions>
             <RowDefinition MaxHeight="20"/>
+            <RowDefinition Height="Auto"/>
             <RowDefinition Height="1*"/>
-            <RowDefinition Height="1*"/>
-            <RowDefinition MaxHeight="50"/>
-            <RowDefinition MaxHeight="20"/>
+            <RowDefinition MaxHeight="75"/>
         </Grid.RowDefinitions>
         <Menu Grid.ColumnSpan="2">
             <MenuItem Header="파일(F)">
-                <MenuItem Header="새 실험(N)" />
-                <MenuItem Header="열기(O)..." />
-                <MenuItem Header="저장(S)..." />
+                <MenuItem x:Name="NewQuestionnaireMenu" Header="새 설문(N)..." Click="NewQuestionnaireMenu_Click" />
+                <MenuItem x:Name="OpenFolderMenu" Header="저장 폴더 열기..." Click="OpenFolderMenu_Click" />
+                <MenuItem x:Name="QuitMenu" Header="닫기(Q)" Click="QuitMenu_Click" />
+            </MenuItem>
+            <MenuItem Header="도구(T)">
+                <MenuItem x:Name="VideoMenu" Header="비디오 창 열기" Click="VideoMenu_Click" />
             </MenuItem>
         </Menu>
         <Grid x:Name="SubjectInfoPanel" Grid.Row="1" Margin="20,0">
@@ -45,7 +47,7 @@
                 <ComboBoxItem Content="여자"/>
             </ComboBox>
             <Label Grid.Row="4" Content="Tag" FontSize="18" VerticalAlignment="Center" HorizontalAlignment="Left" />
-            <Label x:Name="SubjectLabel" Grid.Row="4" Grid.Column="1" Content="Tag" FontSize="14" VerticalAlignment="Center" HorizontalAlignment="Left" Margin="10,5" />
+            <TextBox x:Name="SubjectLabel" Grid.Row="4" Grid.Column="1" Text="Tag" FontSize="14" VerticalAlignment="Stretch" HorizontalAlignment="Stretch" Margin="10,5" />
         </Grid>
         <Grid x:Name="SystemInfoPanel" Grid.Row="2" Margin="20,0">
             <Grid.RowDefinitions>
@@ -61,16 +63,32 @@
             <Label Grid.Row="1" Content="SCANeR 상태" FontSize="18" VerticalAlignment="Center" HorizontalAlignment="Left" />
             <Label x:Name="ScanerStateLabel" Grid.Row="1" Grid.Column="1" Content="알 수 없음" FontSize="18" VerticalAlignment="Center" HorizontalAlignment="Left"/>
             <Label Grid.Row="2" Content="설문 시나리오" FontSize="18" VerticalAlignment="Center" HorizontalAlignment="Left" />
-            <ListBox Grid.Row="2" Grid.Column="1" x:Name="TargetScenarioList" >
+            <ListBox x:Name="TargetScenarioList" Grid.Row="2" Grid.Column="1" SelectionChanged="TargetScenarioList_SelectionChanged">
                 <ListBoxItem Content="사전 연습"/>
                 <ListBoxItem Content="시나리오1: 공사 지점 1"/>
                 <ListBoxItem Content="시나리오2: 자동차 고장 지점"/>
+                <ListBoxItem Content="시나리오3: 더미"/>
                 <ListBoxItem Content="시나리오4: 차량 충돌 사고 지점"/>
+                <ListBoxItem Content="시나리오5: 더미"/>
                 <ListBoxItem Content="시나리오6: 공사 지점 2"/>
                 <ListBoxItem Content="시나리오7: 시스템 고장"/>
+                <ListBoxItem Content="실험 종료"/>
+                <ListBoxItem Content="자유 주행"/>
             </ListBox>
 
         </Grid>
-        <Button x:Name="StartButton" Grid.Row="3" Content="시작" Click="StartButton_Click" />
+        <Grid Grid.Row="3">
+            <Grid.RowDefinitions>
+                <RowDefinition/>
+            </Grid.RowDefinitions>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition/>
+                <ColumnDefinition/>
+                <ColumnDefinition/>
+            </Grid.ColumnDefinitions>
+            <Button x:Name="VideoCloseButton" Grid.Row="0" Grid.Column="0" Content="비디오 창 닫기" Margin="5" Click="VideoCloseButton_Click" />
+            <Button x:Name="VideoControlOptionButton" Grid.Row="0" Grid.Column="1" Content="조정 패널 표시" Margin="5" Click="VideoControlOptionButton_Click" />
+            <Button x:Name="VideoStartButton" Grid.Row="0" Grid.Column="2" Content="비디오 창 다시 열기" Margin="5" Click="VideoMenu_Click" />
+        </Grid>
     </Grid>
 </Window>

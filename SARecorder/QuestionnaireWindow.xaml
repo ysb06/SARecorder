@@ -17,80 +17,107 @@
             <ColumnDefinition />
         </Grid.ColumnDefinitions>
         <TabControl x:Name="QuestionSpace" Grid.Row="0" Grid.ColumnSpan="2">
-            <TabItem Header="주관식">
+            <TabItem Header="1 Page">
                 <Grid>
                     <Grid.RowDefinitions>
-                        <RowDefinition />
-                        <RowDefinition />
+                        <RowDefinition Height="*" />
+                        <RowDefinition Height="2*"/>
                     </Grid.RowDefinitions>
                     <sagat:DrawingQuestion 
                         x:Name="Question1" 
                         Grid.Row="0" 
-                        MainTitle="1. 계기판에 표시되는 경고 신호를 확인하셨습니까?" 
-                        SubTitle="Did you notice a warning signal on the display?"/>
+                        MainTitle="제어권 전환 중, 장애물 혹은 차가 도로에 있었습니까? (정답에 ○표시)" 
+                        SubTitle="Did you see any obstacles or cars in the road?">
+                        <sagat:DrawingQuestion.CanvasBackground>
+                            <ImageBrush ImageSource="/Resources/Q1.png" Stretch="Uniform" TileMode="None"/>
+                        </sagat:DrawingQuestion.CanvasBackground>
+                    </sagat:DrawingQuestion>
                     <sagat:DrawingQuestion 
                         x:Name="Question2" 
                         Grid.Row="1" 
-                        MainTitle="2. 도로에 장애물이나 차량이 있었습니까?" 
-                        SubTitle="Are there any obstacles or cars in the road?"/>
+                        MainTitle="아래 보기 중, 정지 전 주행 상황에 있던 장애물이나 차량은 무엇인가요?
+                        (정답에 ○표시)" 
+                        SubTitle="What obstacle or car was in the scene?">
+                        <sagat:DrawingQuestion.CanvasBackground>
+                            <ImageBrush Stretch="Uniform" ImageSource="/Resources/Q3.png"/>
+                        </sagat:DrawingQuestion.CanvasBackground>
+                    </sagat:DrawingQuestion>
                 </Grid>
             </TabItem>
-            <TabItem Header="객관식">
+            <TabItem Header="2 Page">
                 <Grid>
                     <Grid.RowDefinitions>
-                        <RowDefinition />
-                        <RowDefinition />
-                        <RowDefinition />
+                        <RowDefinition Height="2*"/>
+                        <RowDefinition Height="5*"/>
                     </Grid.RowDefinitions>
                     <sagat:DrawingQuestion 
                         x:Name="Question3" 
                         Grid.Row="0" 
-                        MainTitle="3. 아래 보기 중, 정지 전 주행 상황에 있던 장애물이나 차량은 무엇인가요?" 
-                        SubTitle="What obstacle or car was in the scene?">
+                        MainTitle="계기판에 표시되는 경고 신호를 확인하셨습니까? (정답에 ○표시)" 
+                        SubTitle="Did you notice a warning signal on the display?">
                         <sagat:DrawingQuestion.CanvasBackground>
-                            <ImageBrush ImageSource="/Resources/Q3.png" Stretch="Uniform" TileMode="None"/>
+                            <ImageBrush ImageSource="/Resources/Q1.png" Stretch="Uniform" TileMode="None"/>
                         </sagat:DrawingQuestion.CanvasBackground>
                     </sagat:DrawingQuestion>
                     <sagat:DrawingQuestion 
                         x:Name="Question4" 
                         Grid.Row="1" 
-                        MainTitle="4. 다음 알람 중, 계기판에 나타난 경고 신호는 무엇인가요?" 
+                        MainTitle="다음 알람 중, 계기판에 나타난 경고 신호는 무엇인가요? (정답에 ○표시)" 
                         SubTitle="Describe any warning signal you noticed on the display?">
                         <sagat:DrawingQuestion.CanvasBackground>
                             <ImageBrush Stretch="Uniform" ImageSource="/Resources/Q4.png"/>
                         </sagat:DrawingQuestion.CanvasBackground>
                     </sagat:DrawingQuestion>
-                    <sagat:DrawingQuestion 
-                        x:Name="Question5" 
-                        Grid.Row="2" 
-                        MainTitle="5. 정지 전 주행 상황에서 차량이나 장애물을 피하려면 어떤 행동을 취해야하나요? (자유 서술)" 
-                        SubTitle="What action do you need to take to avoid the obstacles?"/>
                 </Grid>
             </TabItem>
-            <TabItem Header="그림">
+            <TabItem Header="3 Page">
                 <Grid>
                     <Grid.RowDefinitions>
-                        <RowDefinition />
-                        <RowDefinition />
+                        <RowDefinition Height="3*" />
+                        <RowDefinition Height="2*" />
                     </Grid.RowDefinitions>
                     <sagat:DrawingQuestion 
-                        x:Name="Question6" 
-                        Grid.Row="0"
-                        MainTitle="6. 정지 전 주행 상황에서 차량은 어디에 위치하고 있었는지 아래 그림에 표시해 주세요."
-                        SubTitle="Where are you in the scene shown? draw your car and other cars and hazard / obstacles?">
+                        x:Name="Question5" 
+                        Grid.Row="0" 
+                        MainTitle="정지 전 주행 상황에서 차량이나 장애물을 피하고 안전하게 제어권 전환을 하려면, 
+                        위의 시각 신호를 보고 어떤 행동을 취해야할거라고 추측 되나요? (정답에 ○표시)" 
+                        SubTitle="What action do you need to take to avoid the obstacles? - please describe to avoid the obstacles.">
                         <sagat:DrawingQuestion.CanvasBackground>
-                            <ImageBrush Stretch="Uniform" ImageSource="/Resources/Q5.png"/>
+                            <ImageBrush Stretch="Uniform" ImageSource="/Resources/q5_n.png"/>
                         </sagat:DrawingQuestion.CanvasBackground>
                     </sagat:DrawingQuestion>
                     <sagat:DrawingQuestion 
-                        x:Name="Question7" 
+                        x:Name="Question6" 
                         Grid.Row="1" 
-                        MainTitle="7. 아래 그림 위에 기억하시는 정지 전 주행 상황의 모습을 모두 그려주세요." 
-                        SubTitle="Where is the obstacles or cars in the scene?">
+                        MainTitle="제어권 전환이 요청될 때, 자율 주행 중이던 차량의 속도는 얼마였습니까? 
+                        (정답에 ○표시)" 
+                        SubTitle="When a takeover is requested, what is the speed of your car?.">
                         <sagat:DrawingQuestion.CanvasBackground>
-                            <ImageBrush ImageSource="/Resources/Q5.png" Stretch="Uniform"/>
+                            <ImageBrush Stretch="Uniform" ImageSource="/Resources/numbers.png"/>
                         </sagat:DrawingQuestion.CanvasBackground>
                     </sagat:DrawingQuestion>
+                </Grid>
+            </TabItem>
+            <TabItem Header="4 Page">
+                <Grid>
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="*"/>
+                        <RowDefinition Height="84"/>
+                    </Grid.RowDefinitions>
+                    <sagat:DrawingQuestion 
+                        x:Name="Question7" 
+                        Grid.Row="0"
+                        MainTitle="정지 전 주행 상황에서 본인 차량, 전면 장애물 그리고 주변의 모든 물체들은 어디에 위치하고 있었는지 아래 그림에 표시해 주세요. 
+                        
+                        우측의 갓길에 세워진 차량을 기준으로 참고하여 표시해주시면 됩니다. "
+                        SubTitle="Please mark all the obstacles, your car, and all the objects around you.">
+                        <sagat:DrawingQuestion.CanvasBackground>
+                            <ImageBrush Stretch="Uniform" ImageSource="/Resources/Q6_4.png"/>
+                        </sagat:DrawingQuestion.CanvasBackground>
+                    </sagat:DrawingQuestion>
+                    <Border Grid.Row="1" Margin="10, 5" BorderThickness="3" BorderBrush="Red">
+                        <Image Grid.Row="1" Source="/Resources/Guide.png" />
+                    </Border>
                 </Grid>
             </TabItem>
         </TabControl>

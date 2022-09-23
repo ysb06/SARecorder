@@ -47,7 +47,10 @@ namespace SARecorder.Automation
         private readonly Dispatcher eventInvoker;
         private UdpState currentState;
 
+        public double StepState = 0;
         public double SAGATState = 0;
+        public double AutonomousState = 0;
+        public double ScenarioState = 0;
         public List<double> OtherSignals = new List<double>();
 
         public bool IsReady => currentState.client != null;
@@ -115,10 +118,19 @@ namespace SARecorder.Automation
                         case 0:
                             SAGATState = val;
                             break;
+                        case 1:
+                            AutonomousState = val;
+                            break;
+                        case 2:
+                            StepState = val;
+                            break;
+                        case 3:
+                            ScenarioState = val;
+                            break;
                         default:
-                            if (i - 1 < OtherSignals.Count)
+                            if (i - 3 < OtherSignals.Count)
                             {
-                                OtherSignals[i - 1] = val;
+                                OtherSignals[i - 3] = val;
                             }
                             else
                             {
@@ -127,10 +139,20 @@ namespace SARecorder.Automation
                             break;
                     }
                 }
+                Debug.WriteLine($"Step: {StepState}, Scenario: {ScenarioState}");
 
                 eventInvoker.BeginInvoke(() =>
                 {
-                    OnScanerDataReceived?.Invoke(this, new ScanerEventArgs(SAGATState >= 0.5 && SAGATState < 1.5, OtherSignals.ToArray()));
+                    OnScanerDataReceived?.Invoke(
+                        this, 
+                        new ScanerEventArgs(
+                            SAGATState >= 0.5 && SAGATState < 1.5, 
+                            AutonomousState >= 0.5 && AutonomousState < 1.5,
+                            (int)Math.Round(StepState),
+                            (int)Math.Round(ScenarioState),
+                            OtherSignals.ToArray()
+                        )
+                    );
                 });
                 _ = state.client.BeginReceive(OnReceiveMessage, ar.AsyncState);
             }

@@ -22,15 +22,15 @@ namespace SARecorder.SAGAT
         [Category("SAGAT"), Description("Text for the question")]
         public string MainTitle
         {
-            get => QuestionText.Content.ToString();
-            set => QuestionText.Content = value;
+            get => QuestionText.Text.ToString();
+            set => QuestionText.Text = value;
         }
 
         [Category("SAGAT"), Description("Text for the question")]
         public string SubTitle
         {
-            get => SubText.Content.ToString();
-            set => SubText.Content = value;
+            get => SubText.Text.ToString();
+            set => SubText.Text = value;
         }
 
         [Category("Brushes"), Description("Canvas background")]
